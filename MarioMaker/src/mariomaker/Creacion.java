@@ -19,7 +19,7 @@ public class Creacion extends JFrame{
 public Creacion (){
         super("Mario Maker Guatemalteco 1.0");
         this.setVisible(true);
-        this.setBounds(500,150,642,519);
+        this.setBounds(480,120,660,580);
         CreacionP uno = new CreacionP();
         
       
