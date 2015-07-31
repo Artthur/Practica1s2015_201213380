@@ -36,6 +36,7 @@ public class CreacionP extends javax.swing.JPanel implements ActionListener{
     public JLabel imagen1,imagen2,imagen3,imagen4,imagen5,imagen6,imagen7;
     private BufferedImage imageActual;
     public String auxdir,au1,au2,au3,au4,au5,au6,au7;
+    Editar form = new Editar();
     public CreacionP(){
         this.setBounds(0,0,645,700);
         setLayout(null);
@@ -98,6 +99,7 @@ public class CreacionP extends javax.swing.JPanel implements ActionListener{
         boton3.setForeground(Color.red);
         boton3.setBackground(Color.black.brighter());
         boton3.setVisible(true);
+        boton3.addActionListener(this);
         this.add(boton3);
        
         boton2= new JButton("Nombre");
@@ -295,6 +297,62 @@ public class CreacionP extends javax.swing.JPanel implements ActionListener{
       
         }
         
+        else if(e.getSource()==b3) {
+      imagen3 = new JLabel();
+      imagen3.setIcon(new ImageIcon(abrirImagen()));
+            au3= auxdir;
+      System.out.println(au3);
+      imagen3.setBounds(10,195,85,75);
+      this.add(imagen3);
+      repaint();        
+      
+        }
+        
+         else if(e.getSource()==b4) {
+      imagen4 = new JLabel();
+      imagen4.setIcon(new ImageIcon(abrirImagen()));
+            au4= auxdir;
+      System.out.println(au4);
+      imagen4.setBounds(10,275,85,75);
+      this.add(imagen4);
+      repaint();        
+      
+        }
+         else if(e.getSource()==b5) {
+      imagen5 = new JLabel();
+      imagen5.setIcon(new ImageIcon(abrirImagen()));
+            au5= auxdir;
+      System.out.println(au5);
+      imagen5.setBounds(10,355,85,75);
+      this.add(imagen5);
+      repaint();        
+      
+        }
+         else if(e.getSource()==b6) {
+      imagen6 = new JLabel();
+      imagen6.setIcon(new ImageIcon(abrirImagen()));
+            au6= auxdir;
+      System.out.println(au6);
+      imagen6.setBounds(10,435,85,75);
+      this.add(imagen6);
+      repaint();        
+      
+        }
+         else if(e.getSource()==b7) {
+      imagen7 = new JLabel();
+      imagen7.setIcon(new ImageIcon(abrirImagen()));
+            au7= auxdir;
+      System.out.println(au7);
+      imagen7.setBounds(10,515,85,75);
+      this.add(imagen7);
+      repaint();        
+      
+        }
+        
+        else if(e.getSource()==boton3) {
+      form.ver();
+      
+        }
         
         
     }
