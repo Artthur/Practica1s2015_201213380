@@ -36,11 +36,14 @@ public class CreacionP extends javax.swing.JPanel implements ActionListener{
     public JLabel imagen1,imagen2,imagen3,imagen4,imagen5,imagen6,imagen7;
     private BufferedImage imageActual;
     public String auxdir,au1,au2,au3,au4,au5,au6,au7;
+    public int n2;
     Editar form = new Editar();
-    public CreacionP(){
+    
+public CreacionP(){
         this.setBounds(0,0,645,700);
         setLayout(null);
         
+        //Botones añadir
         ad1= new JButton(" añadir ");
         ad1.setBounds(240,70,80,20);
         ad1.setForeground(Color.red);
@@ -92,8 +95,14 @@ public class CreacionP extends javax.swing.JPanel implements ActionListener{
         this.add(ad7);
         
         
-        
-        
+        // Botones Especiales
+        boton4= new JButton(" Continuar ");
+        boton4.setBounds(500,300,90,20);
+        boton4.setForeground(Color.red);
+        boton4.setBackground(Color.black.brighter());
+        boton4.setVisible(true);
+        boton4.addActionListener(this);
+        this.add(boton4);
         boton3= new JButton(" Editar ");
         boton3.setBounds(500,10,90,20);
         boton3.setForeground(Color.red);
@@ -101,7 +110,6 @@ public class CreacionP extends javax.swing.JPanel implements ActionListener{
         boton3.setVisible(true);
         boton3.addActionListener(this);
         this.add(boton3);
-       
         boton2= new JButton("Nombre");
         boton2.setBounds(140,10,80,20);
         boton2.setForeground(Color.white);
@@ -116,6 +124,8 @@ public class CreacionP extends javax.swing.JPanel implements ActionListener{
         boton1.addActionListener(this);
         this.add(boton1);
         
+        
+        //Botones de agregar imagen
         b1= new JButton(" ... ");
         b1.setBounds(105,70,20,20);
         b1.setForeground(Color.white);
@@ -166,6 +176,7 @@ public class CreacionP extends javax.swing.JPanel implements ActionListener{
         b7.setVisible(true);
         this.add(b7);
         
+        // Campos de Nombres
         campo1= new TextField("Castillo");
         campo1.setBounds(140,70,80,20);
         campo1.setVisible(true);
@@ -195,6 +206,8 @@ public class CreacionP extends javax.swing.JPanel implements ActionListener{
         campo7.setVisible(true);
         this.add(campo7);
         
+        
+        // Campos de Cantidad
         c1= new TextField("1");
         c1.setBounds(340,70,20,20);
         c1.setVisible(true);
@@ -240,6 +253,7 @@ public class CreacionP extends javax.swing.JPanel implements ActionListener{
     }
         }
     
+    // Metodo para abrir imagenes
      public BufferedImage abrirImagen(){
         //Creamos la variable que será devuelta (la creamos como null)
         BufferedImage bmp=null;
@@ -275,87 +289,83 @@ public class CreacionP extends javax.swing.JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==b1) {
+        
+        // Accion de botones para abrir las imagenes "..."
+     if(e.getSource()==b1) {
       imagen1 = new JLabel();
       imagen1.setIcon(new ImageIcon(abrirImagen()));
             au1= auxdir;
       System.out.print(au1);
       imagen1.setBounds(10,35,85,75);
       this.add(imagen1);
-      repaint();        
-      
-        }
-        
-        else if(e.getSource()==b2) {
+      repaint();}
+     else if(e.getSource()==b2) {
       imagen2 = new JLabel();
       imagen2.setIcon(new ImageIcon(abrirImagen()));
             au2= auxdir;
       System.out.println(au2);
       imagen2.setBounds(10,115,85,75);
       this.add(imagen2);
-      repaint();        
-      
-        }
-        
-        else if(e.getSource()==b3) {
+      repaint();}
+     else if(e.getSource()==b3) {
       imagen3 = new JLabel();
       imagen3.setIcon(new ImageIcon(abrirImagen()));
             au3= auxdir;
       System.out.println(au3);
       imagen3.setBounds(10,195,85,75);
       this.add(imagen3);
-      repaint();        
-      
-        }
-        
-         else if(e.getSource()==b4) {
+      repaint();}
+     else if(e.getSource()==b4) {
       imagen4 = new JLabel();
       imagen4.setIcon(new ImageIcon(abrirImagen()));
             au4= auxdir;
       System.out.println(au4);
       imagen4.setBounds(10,275,85,75);
       this.add(imagen4);
-      repaint();        
-      
-        }
-         else if(e.getSource()==b5) {
+      repaint();}
+     else if(e.getSource()==b5) {
       imagen5 = new JLabel();
       imagen5.setIcon(new ImageIcon(abrirImagen()));
             au5= auxdir;
       System.out.println(au5);
       imagen5.setBounds(10,355,85,75);
       this.add(imagen5);
-      repaint();        
-      
-        }
-         else if(e.getSource()==b6) {
+      repaint();}
+     else if(e.getSource()==b6) {
       imagen6 = new JLabel();
       imagen6.setIcon(new ImageIcon(abrirImagen()));
             au6= auxdir;
       System.out.println(au6);
       imagen6.setBounds(10,435,85,75);
       this.add(imagen6);
-      repaint();        
-      
-        }
-         else if(e.getSource()==b7) {
+      repaint();}
+     else if(e.getSource()==b7) {
       imagen7 = new JLabel();
       imagen7.setIcon(new ImageIcon(abrirImagen()));
             au7= auxdir;
       System.out.println(au7);
       imagen7.setBounds(10,515,85,75);
       this.add(imagen7);
-      repaint();        
-      
-        }
+      repaint();}
         
+         
+     //Botontes Especiales    
         else if(e.getSource()==boton3) {
-      form.ver();
-      
-        }
+      form.ver();}
+        else if(e.getSource()==boton4) {
+      Salida();}
+    }
+    
+    // Metodo para sacar los datos
+    public void Salida(){
+        this.n2 = form.Traer(n2);
+        System.out.println(n2+"ya");
         
+     
         
     }
+    
+    
     
     
 

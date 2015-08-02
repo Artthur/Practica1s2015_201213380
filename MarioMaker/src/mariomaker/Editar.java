@@ -21,6 +21,7 @@ import javax.swing.JLabel;
 public class Editar extends JFrame implements ActionListener{
     
     public JButton boton1, boton2;
+    public int n=1;
     
     public Editar(){
         
@@ -57,15 +58,25 @@ public class Editar extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==boton1) {
-           this.setVisible(false);
-      
-        }
         
+        // Boton para elegir Cola
+        if(e.getSource()==boton1) {   
+         n=1;
+         System.out.println(n+"Cola");
+         this.setVisible(false);}
+        
+        // Boton para elegir Pila
         else if(e.getSource()==boton2) {
+           n=2;
+           System.out.println(n+"Pila");
            this.setVisible(false);
-      
         }
+    }
+    
+    // Metodo para enviar el codigo de salida "1" Cola, "2" Pila
+    public int Traer(int n3){
+       n3=n;
+          return n3;             
     }
     
 }
