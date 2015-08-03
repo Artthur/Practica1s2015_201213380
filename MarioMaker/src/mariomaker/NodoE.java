@@ -15,16 +15,19 @@ public class NodoE {
     public NodoE siguiente;
     public String direccion;
     public String nombre;
+    public int id;
     
     
     public NodoE(){
         
     }
-     public NodoE(NodoE anterior, String direccion, String nombre, NodoE siguiente){
+     public NodoE(NodoE anterior, String direccion, String nombre,int id, NodoE siguiente){
          this.anterior = anterior;
          this.siguiente = siguiente;
          this.direccion = direccion;
          this.nombre = nombre;
+         this.id= id;
+         
          
      }
      
@@ -50,6 +53,14 @@ public class NodoE {
      
      public void setNombre(String nombre){
          this.nombre=nombre;
+     }
+     
+     public int getId(){
+         return id;
+     }
+     
+     public void setId(int id){
+         this.id=id;
      }
      
      public NodoE getSiguiente(){

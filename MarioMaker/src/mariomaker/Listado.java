@@ -26,6 +26,7 @@ public class Listado extends JFrame {
     }
     
     public void poner(){
+        cuatro.Recibe(datos2);
         this.add(cuatro,BorderLayout.CENTER);
         this.setVisible(true);
         //this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE);
