@@ -17,11 +17,11 @@ import javax.swing.JFrame;
 public class Creacion extends JFrame{
         
 public Creacion (){
-        super("Mario Maker Guatemalteco 1.0");
+        super("Mario Maker Guatemalteco 1.0 Creacion");
         this.setVisible(true);
         this.setBounds(500,20,660,700);
         CreacionP uno = new CreacionP();
-        
+        uno.invisible(this);
       
         
         
@@ -30,8 +30,13 @@ public Creacion (){
         setLayout(null);
         this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE);
         
-        /*AudioClip sonido;
-         sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Imagenes/Tema_da_abertura_de_The_Walking_Dead_em_Rock.wav"));
+        AudioClip sonido;
+         sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Imagenes/cancion_mario_kart.wav"));
          sonido.play();
-         */
-    }}
+         
+    }
+
+
+
+
+}

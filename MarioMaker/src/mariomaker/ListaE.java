@@ -118,10 +118,24 @@ public boolean imprimir(){
 
 }
 
-public boolean OrdenarP(){
+public boolean Modificar(String Dir, String nombre,int id){
+    NodoE temporal;
+    temporal = inicio;
+    while(temporal.id!=id){
+    temporal = temporal.siguiente;
+    }
     
+    if(temporal.id==id){
+        temporal.setNombre(nombre);
+        temporal.setDireccion(Dir);
+    }
+    else {
+        JOptionPane.showMessageDialog(null,"Error");
+    }
     return true;
-}        
+}
+
+        
         
      
 }

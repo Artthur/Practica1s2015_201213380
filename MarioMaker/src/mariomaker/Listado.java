@@ -13,28 +13,61 @@ import javax.swing.JFrame;
  *
  * @author Raul
  */
-public class Listado extends JFrame {
+public class Listado extends JFrame{
     ListaE datos2 = new ListaE();
-    ListadoP cuatro = new ListadoP();
+     ListadoP cuatro = new ListadoP();
+    
+    
+    
     
     public Listado(){
-        super("Mario Maker Guatemalteco 1.1");
-        this.setVisible(false);
-        this.setBounds(500,20,660,700);
+        super("Mario Maker Guatemalteco 1.1 Listado");
+        this.setBounds(500,20,660,500);
         this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE);
+        this.setVisible(false);
+        setLayout(null);
+    /*JScrollPane scrollPane = new JScrollPane(ListaP);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setBounds(0, 0, 645, 700);
+        JPanel contentPane = new JPanel(null);
+        contentPane.setPreferredSize(new Dimension(645, 700));
+        contentPane.add(scrollPane);
+        this.setContentPane(contentPane);
+        this.pack();
+        this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE);
+        */
+       
+      //  JScrollPane pane = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+   //     this.setContentPane(pane);
+
+        
+        
+        
+        
+        
         
     }
     
     public void poner(){
-        cuatro.Recibe(datos2);
-        this.add(cuatro,BorderLayout.CENTER);
         this.setVisible(true);
-        //this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE);
+        this.add(cuatro,BorderLayout.CENTER);
+        cuatro.Recibe(datos2);
         setLayout(null);
+        
+      
+        
+        
     }
     public boolean Recibe(ListaE dos){
         datos2 = dos;
         System.out.println(datos2.tamaño);
         return true;
     }
+
+    
+    
+
+ 
 }

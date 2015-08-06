@@ -31,6 +31,8 @@ public class Editar extends JFrame implements ActionListener{
         
         this.setVisible(false);
         
+        
+        
         boton2= new JButton("PILA");
         boton2.setBounds(10,10,100,30);
         boton2.setForeground(Color.red);
