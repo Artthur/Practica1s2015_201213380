@@ -12,13 +12,11 @@ import java.awt.Graphics;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 /**
  *
@@ -31,7 +29,7 @@ public class ListadoP extends JPanel implements ActionListener{
     public int cod,t,auxid1,auxid2,auxid3,auxid4;
     ListaE datos3 = new ListaE();
     ListaE aux = new ListaE();
-    public NodoE sigui ;
+    public NodoE sigui,anti ;
     
    
     
@@ -252,6 +250,7 @@ public class ListadoP extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+       //Boton para eliminar con id
         if(e.getSource()==boton1) {
        try{     
       
@@ -265,7 +264,7 @@ public class ListadoP extends JPanel implements ActionListener{
     JOptionPane.showMessageDialog(null,"Error al eliminar");
      
  }}
-       
+       //Botones de eliminar
         else if(e.getSource()==elim1) {
         aux.sustraer(auxid1);
         }
@@ -279,6 +278,7 @@ public class ListadoP extends JPanel implements ActionListener{
         aux.sustraer(auxid4);
         }
         
+        //Botones de Modificar
         else if(e.getSource()==mod1) {
         aux.Modificar(campo1.getText(), auxid1);
         }
@@ -292,19 +292,39 @@ public class ListadoP extends JPanel implements ActionListener{
         aux.Modificar(campo4.getText(), auxid4);
         }
         
-        
+        //Boton para ordenar
        else if(e.getSource()==carga) {
         Extraer(cod);
         }
+       
+       //Boton para Actualizar muestra
         else if(e.getSource()==mostra) {
         t=0;   
         Mostrar(aux.inicio);
         sigui=aux.inicio;
         }
+        
+        //Boton para siguiente
         else if(e.getSource()==sig) {
         t=0;   
-        
+        if(sigui.siguiente!=null){
         Siguiente();
+        }
+        else if(sigui.siguiente==null){
+        System.out.println("Fin1");
+        }      
+        }
+       
+       //Boton para anterior
+        else if(e.getSource()==ant) {
+        t=0;   
+        
+        if(sigui.anterior!=null){
+        Anterior();
+        }
+        else if(sigui.anterior==null){
+            System.out.println("Fin2");
+        }
         }
      
     }
@@ -415,13 +435,47 @@ auxilio = auxilio.siguiente;
   public boolean Siguiente(){
       
     sigui=sigui.siguiente;
-    while(sigui.tieneSiguiente()){
-    Mostrar(sigui);
-    }
+    
+   try {
+       if(sigui.tieneSiguiente()){ 
+   Mostrar(sigui);
+    
+   }
+       else if (sigui.siguiente==null){
+         Mostrar(sigui);
+         JOptionPane.showMessageDialog(null,"Final de los datos"); 
+       }
+       
+   }
+   catch(Exception e){
+       JOptionPane.showMessageDialog(null,"Final de datos");
+   }
    
    
   return true;
   
       
   }
+  
+  public boolean Anterior(){
+      sigui=sigui.anterior;
+    
+   try {
+       if(sigui.tieneAnterior()){ 
+   Mostrar(sigui);
+    
+   }
+       else if (sigui.anterior==null){
+         Mostrar(sigui);
+       }
+       else {
+         JOptionPane.showMessageDialog(null,"Final de datos");  
+       }
+   }
+   catch(Exception e){
+       JOptionPane.showMessageDialog(null,"Final de datos");
+   }
+      return true;
+  }
+  
 }
