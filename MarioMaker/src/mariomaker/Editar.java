@@ -76,9 +76,9 @@ public class Editar extends JFrame implements ActionListener{
     }
     
     // Metodo para enviar el codigo de salida "1" Cola, "2" Pila
-    public int Traer(int n3){
-       n3=n;
-          return n3;             
+    public int Traer(){
+       
+          return n;             
     }
     
 }

@@ -6,6 +6,7 @@
 
 package mariomaker;
 
+import java.awt.image.BufferedImage;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,11 +15,12 @@ import javax.swing.JOptionPane;
  */
 public class ListaE {
     NodoE inicio;
+    NodoE fin;
     int tamaño;
     
-    public boolean adicionar(String direccion,String nombre, int id){
+    public boolean adicionar(BufferedImage imagen,String nombre, int id){
         if(inicio==null){
-        inicio = new NodoE(null,direccion,nombre,id,null);
+        inicio = new NodoE(null,imagen,nombre,id,null);
         tamaño++;
         return true;
         }
@@ -27,7 +29,7 @@ public class ListaE {
         while(temp.tieneSiguiente()){
         temp= temp.getSiguiente();
         }
-        temp.setSiguiente(new NodoE(temp,direccion,nombre,id,null));
+        temp.setSiguiente(new NodoE(temp,imagen,nombre,id,null));
         tamaño++;
         return true;
         }  
@@ -118,7 +120,7 @@ public boolean imprimir(){
 
 }
 
-public boolean Modificar(String Dir, String nombre,int id){
+public boolean Modificar(String nombre,int id){
     NodoE temporal;
     temporal = inicio;
     while(temporal.id!=id){
@@ -127,13 +129,14 @@ public boolean Modificar(String Dir, String nombre,int id){
     
     if(temporal.id==id){
         temporal.setNombre(nombre);
-        temporal.setDireccion(Dir);
+        
     }
     else {
         JOptionPane.showMessageDialog(null,"Error");
     }
     return true;
 }
+
 
         
         

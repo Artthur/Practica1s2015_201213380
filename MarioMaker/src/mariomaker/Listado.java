@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 public class Listado extends JFrame{
     ListaE datos2 = new ListaE();
      ListadoP cuatro = new ListadoP();
+     public int cod;
     
     
     
@@ -50,19 +51,23 @@ public class Listado extends JFrame{
         
     }
     
+    
+    
     public void poner(){
         this.setVisible(true);
         this.add(cuatro,BorderLayout.CENTER);
-        cuatro.Recibe(datos2);
+        cuatro.Recibe(datos2,cod);
         setLayout(null);
+        datos2=null;
         
       
         
         
     }
-    public boolean Recibe(ListaE dos){
+    public boolean Recibe(ListaE dos,int d){
         datos2 = dos;
-        System.out.println(datos2.tamaño);
+        cod = d;
+        System.out.println(datos2.tamaño+" "+" "+cod);
         return true;
     }
 

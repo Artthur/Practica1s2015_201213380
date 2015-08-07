@@ -6,6 +6,8 @@
 
 package mariomaker;
 
+import java.awt.image.BufferedImage;
+
 /**
  *
  * @author Raul
@@ -13,7 +15,7 @@ package mariomaker;
 public class NodoE {
     public NodoE anterior;
     public NodoE siguiente;
-    public String direccion;
+    public BufferedImage imagen;
     public String nombre;
     public int id;
     
@@ -21,10 +23,10 @@ public class NodoE {
     public NodoE(){
         
     }
-     public NodoE(NodoE anterior, String direccion, String nombre,int id, NodoE siguiente){
+     public NodoE(NodoE anterior, BufferedImage imagen, String nombre,int id, NodoE siguiente){
          this.anterior = anterior;
          this.siguiente = siguiente;
-         this.direccion = direccion;
+         this.imagen = imagen;
          this.nombre = nombre;
          this.id= id;
          
@@ -39,12 +41,12 @@ public class NodoE {
          this.anterior = anterior;
      }
      
-     public String getDireccion(){
-         return direccion;
+     public BufferedImage getImagne(){
+         return imagen;
      }
      
-     public void setDireccion(String direccion){
-         this.direccion= direccion;
+     public void setDireccion(BufferedImage imagen){
+         this.imagen= imagen;
      }
      
      public String getNombre(){

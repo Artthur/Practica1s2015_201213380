@@ -30,9 +30,9 @@ public Creacion (){
         setLayout(null);
         this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE);
         
-        AudioClip sonido;
-         sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Imagenes/cancion_mario_kart.wav"));
-         sonido.play();
+      //  AudioClip sonido;
+     //    sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Imagenes/cancion_mario_kart.wav"));
+        // sonido.play();
          
     }
 
