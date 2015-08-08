@@ -27,7 +27,7 @@ public class ListadoP extends JPanel implements ActionListener{
     public JButton boton1,boton2,boton3,boton4,elim1,elim2,elim3,elim4,mod1,mod2,mod3,mod4,carga,mostra,sig,ant,cont;
     public TextField campo1,campo2,campo3,campo4;
     public JLabel imagen1,imagen2,imagen3,imagen4;
-    public int cod,t,auxid1,auxid2,auxid3,auxid4;
+    public int cod,t,auxid1,auxid2,auxid3,auxid4,q1,q2,q3,q4,q5,q6,q7,q8,i,i2,i3,i4;
     ListaE datos3 = new ListaE();
     ListaE aux = new ListaE();
     Tablero tablero  = new Tablero();
@@ -198,9 +198,17 @@ public class ListadoP extends JPanel implements ActionListener{
     }
         }
     
-    public boolean Recibe(ListaE tres,int d){
+    public boolean Recibe(ListaE tres,int d,int r1,int r2,int r3,int r4,int r5,int r6,int r7,int r8){
         datos3 = tres;
         cod = d;
+        q1=r1;
+        q2=r2;
+        q3=r3;
+        q4=r4;
+        q5=r5;
+        q6=r6;
+        q7=r7;
+        q8=r8;
         System.out.println(datos3.tamaño+" "+" "+cod);
         
         return true;
@@ -212,11 +220,11 @@ public class ListadoP extends JPanel implements ActionListener{
     NodoE Cola = datos3.inicio;  
  try{   while(Cola.tieneSiguiente()){
     System.out.println("Cola");
-       aux.adicionar(Cola.imagen,Cola.nombre,Cola.id);
+       aux.adicionar(Cola.imagen,Cola.nombre,Cola.id,Cola.id2);
        Cola = Cola.siguiente;
        
     } 
-     aux.adicionar(Cola.imagen,Cola.nombre,Cola.id);
+     aux.adicionar(Cola.imagen,Cola.nombre,Cola.id,Cola.id2);
      System.out.println("");
      System.out.println("____Orden_____");
      System.out.println("");
@@ -240,10 +248,10 @@ public class ListadoP extends JPanel implements ActionListener{
     } 
       while (Pila.tieneAnterior()){
           
-      aux.adicionar(Pila.imagen,Pila.nombre,Pila.id);  
+      aux.adicionar(Pila.imagen,Pila.nombre,Pila.id,Pila.id2);  
       Pila=Pila.anterior;
       }
-      aux.adicionar(Pila.imagen,Pila.nombre,Pila.id); 
+      aux.adicionar(Pila.imagen,Pila.nombre,Pila.id,Pila.id2); 
        System.out.println("");
      System.out.println("____Orden_____");
      System.out.println("");
@@ -276,15 +284,19 @@ public class ListadoP extends JPanel implements ActionListener{
        //Botones de eliminar
         else if(e.getSource()==elim1) {
         aux.sustraer(auxid1);
+         Cantidad(i);    
         }
         else if(e.getSource()==elim2) {
         aux.sustraer(auxid2);
+         Cantidad(i2);
         }
         else if(e.getSource()==elim3) {
         aux.sustraer(auxid3);
+         Cantidad(i3);
         }
         else if(e.getSource()==elim4) {
         aux.sustraer(auxid4);
+         Cantidad(i4);
         }
         
         //Botones de Modificar
@@ -308,7 +320,9 @@ public class ListadoP extends JPanel implements ActionListener{
        
        //Boton para continuar
        else if(e.getSource()==cont) {
+        
         tablero.poner();
+        tablero.Recibe(aux, q1, q2, q3, q4, q5, q6, q7, q8);
         m.setVisible(false);
         }
        
@@ -370,16 +384,21 @@ public class ListadoP extends JPanel implements ActionListener{
     repaint();
       campo1.setText(auxilio.nombre);
       auxid1=auxilio.id;
+      i=auxilio.id2;
+      
       if(auxilio.siguiente==null){
          imagen2.setIcon(null);
          campo2.setText("");
          auxid2=0;
+         i2=0;
          imagen3.setIcon(null);
          campo3.setText("");
          auxid3=0;
+         i3=0;
          imagen4.setIcon(null);
          campo4.setText("");
          auxid4=0;
+         i4=0;
          
           return true;
       }
@@ -391,14 +410,17 @@ public class ListadoP extends JPanel implements ActionListener{
       this.add(imagen2);
       campo2.setText(auxilio.nombre);
       auxid2=auxilio.id;
+      i2=auxilio.id2;
        if(auxilio.siguiente==null){
            
          imagen3.setIcon(null);
          campo3.setText("");
          auxid3=0;
+         i3=0;
          imagen4.setIcon(null);
          campo4.setText("");
          auxid4=0;
+         i4=0;
           return true;
       }
       
@@ -410,11 +432,13 @@ public class ListadoP extends JPanel implements ActionListener{
       this.add(imagen3);
       campo3.setText(auxilio.nombre);
       auxid3=auxilio.id;
+      i3=auxilio.id2;
        if(auxilio.siguiente==null){
            
          imagen4.setIcon(null);
          campo4.setText("");
          auxid4=0;
+         i4=0;
           return true;
       }
       
@@ -425,6 +449,7 @@ public class ListadoP extends JPanel implements ActionListener{
       this.add(imagen4);
       campo4.setText(auxilio.nombre);
       auxid4=auxilio.id;
+      i4=auxilio.id2;
        if(auxilio.siguiente==null){
           return true;
       }
@@ -498,5 +523,33 @@ auxilio = auxilio.siguiente;
          
             return true;
         }
-  
+  public boolean Cantidad(int f){
+      if(f==1){
+            q1--;
+        }
+      else if(f==2){
+            q2--;
+        }
+      else if(f==3){
+            q3--;
+        }
+      else  if(f==4){
+            q4--;
+        }
+      else if(f==5){
+            q5--;
+        }
+     else if(f==6){
+            q6--;
+        }
+     else if(f==7){
+            q7--;
+        }
+     else if(f==8){
+            q8--;
+        }
+return true;      
+  }
 }
+  
+  

@@ -18,9 +18,9 @@ public class ListaE {
     NodoE fin;
     int tamaño;
     
-    public boolean adicionar(BufferedImage imagen,String nombre, int id){
+    public boolean adicionar(BufferedImage imagen,String nombre, int id, int id2){
         if(inicio==null){
-        inicio = new NodoE(null,imagen,nombre,id,null);
+        inicio = new NodoE(null,imagen,nombre,id,id2,null);
         tamaño++;
         return true;
         }
@@ -29,7 +29,7 @@ public class ListaE {
         while(temp.tieneSiguiente()){
         temp= temp.getSiguiente();
         }
-        temp.setSiguiente(new NodoE(temp,imagen,nombre,id,null));
+        temp.setSiguiente(new NodoE(temp,imagen,nombre,id,id2,null));
         tamaño++;
         return true;
         }  

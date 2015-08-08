@@ -7,19 +7,27 @@
 package mariomaker;
 
 import java.awt.Color;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Raul
  */
 public class Tablero extends JFrame implements ActionListener{
-    public JButton boton1,boton2,boton3,boton4,siguiente,anterior,muestra,elifila,elicolu;
-    public JLabel imagen1;
+    public JButton boton1,boton2,boton3,boton4,siguiente,anterior,muestra,elifila,elicolu,cont,boton5;
+    public JLabel imagen;
+    public String m1,m2,m3,m4,m5,m6,m7,m8;
+    ListaE Datos = new ListaE();
+    NodoE nuevo;
+    Datos n = new Datos();
+    public int  j1,j2,j3,j4,j5,j6,j7,j8;
     
     public Tablero(){
         super("Mario Maker Guatemalteco 1.0 Creacion");
@@ -29,14 +37,14 @@ public class Tablero extends JFrame implements ActionListener{
         setLayout(null);
         
         boton2= new JButton("Eliminar");
-        boton2.setBounds(140,10,90,20);
+        boton2.setBounds(100,10,90,40);
         boton2.setForeground(Color.red);
         boton2.setBackground(Color.black.brighter());
         boton2.addActionListener(this); 
         boton2.setVisible(true);
         this.add(boton2);
         boton3= new JButton("Graficar");
-        boton3.setBounds(10,10,90,20);
+        boton3.setBounds(10,10,90,40);
         boton3.setBackground(Color.black.brighter());
         boton3.setForeground(Color.red);
         boton3.setVisible(true);
@@ -44,7 +52,7 @@ public class Tablero extends JFrame implements ActionListener{
         this.add(boton3);
         
         boton1= new JButton("Datos");
-        boton1.setBounds(270,10,90,20);
+        boton1.setBounds(190,10,80,40);
         boton1.setForeground(Color.red);
         boton1.setBackground(Color.black.brighter());
         boton1.setVisible(true);
@@ -53,11 +61,15 @@ public class Tablero extends JFrame implements ActionListener{
         
         boton4= new JButton("Listado:");
         boton4.setBounds(1080,10,100,20);
-        boton4.setForeground(Color.white);
+        boton4.setForeground(Color.red);
         boton4.setBackground(Color.black.brighter());
+        boton4.addActionListener(this);
         boton4.setVisible(true);
         this.add(boton4);
         
+        
+        // columna 1180,170,115,550
+        // fila 275,0,800,60
         
         siguiente = new JButton(">");
         siguiente.setBounds(1130,30,50,20);
@@ -75,30 +87,193 @@ public class Tablero extends JFrame implements ActionListener{
         anterior.addActionListener(this); 
         this.add(anterior);
         
-        imagen1 = new JLabel();
-        imagen1.setBounds(1190,10,85,75);
+        imagen = new JLabel();
+        imagen.setBounds(1190,10,85,75);
         
         muestra= new JButton("Matriz");
-        muestra.setBounds(10,60,1175,660);
+        muestra.setBounds(10,60,1170,660);
         muestra.setForeground(Color.black);
-        muestra.setBackground(Color.green.brighter());
+        muestra.setBackground(Color.white.brighter());
         muestra.setVisible(true);
         muestra.addActionListener(this); 
         this.add(muestra);
+        
+        elifila= new JButton("Add-Columna");
+        elifila.setBounds(1185,125,110,20);
+        elifila.setForeground(Color.red);
+        elifila.setBackground(Color.black.brighter());
+        elifila.setVisible(true);
+        elifila.addActionListener(this); 
+        this.add(elifila);
+        elicolu= new JButton("Add-Fila");
+        elicolu.setBounds(1185,95,110,20);
+        elicolu.setForeground(Color.red);
+        elicolu.setBackground(Color.black.brighter());
+        elicolu.setVisible(true);
+        elicolu.addActionListener(this); 
+        this.add(elicolu);
+        cont= new JButton("Continuar...");
+        cont.setBounds(1185,155,110,20);
+        cont.setForeground(Color.green);
+        cont.setBackground(Color.black.brighter());
+        cont.setVisible(true);
+        cont.addActionListener(this); 
+        this.add(cont);
+        //Columna
+      ImageIcon imagens = new ImageIcon (getClass().getResource("/Imagenes/Columna.jpg"));   
+      JLabel fondo1 = new JLabel(imagens);
+      fondo1.setBounds(new Rectangle(1180,180,115,540));
+      this.add(fondo1);
+      //Fila
+      ImageIcon imagen2s = new ImageIcon (getClass().getResource("/Imagenes/Fila.jpg"));   
+      JLabel fondo2 = new JLabel(imagen2s);
+      fondo2.setBounds(new Rectangle(275,0,800,60));
+      this.add(fondo2);
+        
         
         
         
         repaint();
     }
     
+    public boolean Datos(String a1,String a2,String a3,String a4,String a5,String a6,String a7,String a8){
+        
+        
+        m1=a1;
+        m2=a2;
+        m3=a3;
+        m4=a4;
+        m5=a5;
+        m6=a6;
+        m7=a7;
+        m8=a8;
+  
+      
+ 
+   
+    return true;
+ 
+ 
+
+
+}
     public void poner(){
         this.setVisible(true);
         setLayout(null);
     }
 
+    public boolean Recibe(ListaE tres,int r1,int r2,int r3,int r4,int r5,int r6,int r7,int r8){
+        Datos = tres;
+        j1=r1;
+        j2=r2;
+        j3=r3;
+        j4=r4;
+        j5=r5;
+        j6=r6;
+        j7=r7;
+        j8=r8;
+        System.out.println(Datos.tamaño+" En tablero");
+        
+       
+        return true;
+    }
+    
+    public boolean Ver(NodoE n){
+           
+     NodoE auxilio = n;
+  //Primera funcion de actualizado    
+ 
+   imagen.setIcon(new ImageIcon(auxilio.imagen));
+    this.add(imagen);
+    
+    repaint();
+
+        return true;
+    }
+    
+    public boolean Siguiente(){
+      
+    nuevo=nuevo.siguiente;
+    
+   try {
+       if(nuevo.tieneSiguiente()){ 
+   Ver(nuevo);
+    
+   }
+       else if (nuevo.siguiente==null){
+         Ver(nuevo);
+         JOptionPane.showMessageDialog(null,"Final de los datos"); 
+       }
+       
+   }
+   catch(Exception e){
+       JOptionPane.showMessageDialog(null,"Final de datos");
+   }
+   
+   
+  return true;
+  
+      
+  }
+  
+  public boolean Anterior(){
+      nuevo=nuevo.anterior;
+    
+   try {
+       if(nuevo.tieneAnterior()){ 
+   Ver(nuevo);
+    
+   }
+       else if (nuevo.anterior==null){
+         Ver(nuevo);
+       }
+       else {
+         JOptionPane.showMessageDialog(null,"Final de datos");  
+       }
+   }
+   catch(Exception e){
+       JOptionPane.showMessageDialog(null,"Final de datos");
+   }
+      return true;
+  }
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       if(e.getSource()==boton4) {
+           
+        Ver(Datos.inicio);
+        nuevo=Datos.inicio;
+        
+        }
+       //Boton para siguiente
+        else if(e.getSource()==siguiente) {
+           
+        if(nuevo.siguiente!=null){
+        Siguiente();
+        }
+        else if(nuevo.siguiente==null){
+        System.out.println("Fin1");
+        }      
+        }
+       
+       //Boton para anterior
+        else if(e.getSource()==anterior) {
+         
+        
+        if(nuevo.anterior!=null){
+        Anterior();
+        }
+        else if(nuevo.anterior==null){
+            System.out.println("Fin2");
+        }
+        }
+       else if(e.getSource()==boton1) {
+         
+        n.recibir(m1, m2, m3, m4, m5, m6, m7, m8,j1,j2,j3,j4,j5,j6,j7,j8);
+        n.ver();
+        
+        }
+       
+       
     }
     
     

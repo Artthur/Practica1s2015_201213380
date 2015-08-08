@@ -401,10 +401,10 @@ public CreacionP(){
         else if(e.getSource()==boton4) {
       Salida();
             System.out.println(datos.tamaño);
-        uno.Recibe(datos,n2);
+        uno.Recibe(datos,n2,i,i2,i3,i4,i5,i6,i7,i8);
         System.out.println("datos"+" "+identifica);
         datos.imprimir();
-     System.out.println();
+        uno.cuatro.tablero.Datos(campo1.getText(), campo2.getText(), campo3.getText(), campo4.getText(), campo5.getText(), campo6.getText(), campo7.getText(),campo8.getText());
         uno.poner();
         datos=null;
         m.setVisible(false);
@@ -423,7 +423,7 @@ public CreacionP(){
          if ( i<1){
          i++;
          identifica++;
-         datos.adicionar(au1,campo1.getText(),identifica);
+         datos.adicionar(au1,campo1.getText(),1,identifica);
          System.out.println("Dato de meta añadido");
          
           c1.setText(Integer.toString(i));
@@ -438,7 +438,7 @@ public CreacionP(){
          if ( i2<1){
          i2++;
          identifica++;
-         datos.adicionar(au2,campo2.getText(),identifica);
+         datos.adicionar(au2,campo2.getText(),2,identifica);
          System.out.println("Dato de personaje añadido");
          c2.setText(Integer.toString(i2));
          
@@ -452,7 +452,7 @@ public CreacionP(){
      else if(e.getSource()==ad3) {
          i3++;
          identifica++;
-        datos.adicionar(au3,campo3.getText(),identifica);
+        datos.adicionar(au3,campo3.getText(),3,identifica);
          System.out.println("Dato añadido");
          c3.setText(Integer.toString(i3));
          }
@@ -460,7 +460,7 @@ public CreacionP(){
      else if(e.getSource()==ad4) {
          i4++;
          identifica++;
-        datos.adicionar(au4,campo4.getText(),identifica);
+        datos.adicionar(au4,campo4.getText(),4,identifica);
          System.out.println("Dato añadido");
           
          c4.setText(Integer.toString(i4));
@@ -469,7 +469,7 @@ public CreacionP(){
      else if(e.getSource()==ad5) {
          i5++;
          identifica++;
-        datos.adicionar(au5,campo5.getText(),identifica);
+        datos.adicionar(au5,campo5.getText(),5,identifica);
          System.out.println("Dato añadido");
          c5.setText(Integer.toString(i5));
          }
@@ -477,7 +477,7 @@ public CreacionP(){
      else if(e.getSource()==ad6) {
          i6++;
          identifica++;
-        datos.adicionar(au6,campo6.getText(),identifica);
+        datos.adicionar(au6,campo6.getText(),6,identifica);
          System.out.println("Dato añadido");
          c6.setText(Integer.toString(i6));
          }
@@ -485,14 +485,14 @@ public CreacionP(){
      else if(e.getSource()==ad7) {
          i7++;
          identifica++;
-        datos.adicionar(au7,campo7.getText(),identifica);
+        datos.adicionar(au7,campo7.getText(),7,identifica);
          System.out.println("Dato añadido"); 
          c7.setText(Integer.toString(i7));
          }
      else if(e.getSource()==ad8) {
          i8++;
          identifica++;
-        datos.adicionar(au8,campo8.getText(),identifica);
+        datos.adicionar(au8,campo8.getText(),8,identifica);
          System.out.println("Dato añadido"); 
          c8.setText(Integer.toString(i8));
          }

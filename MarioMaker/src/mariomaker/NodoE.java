@@ -17,18 +17,19 @@ public class NodoE {
     public NodoE siguiente;
     public BufferedImage imagen;
     public String nombre;
-    public int id;
+    public int id,id2;
     
     
     public NodoE(){
         
     }
-     public NodoE(NodoE anterior, BufferedImage imagen, String nombre,int id, NodoE siguiente){
+     public NodoE(NodoE anterior, BufferedImage imagen, String nombre,int id,int id2, NodoE siguiente){
          this.anterior = anterior;
          this.siguiente = siguiente;
          this.imagen = imagen;
          this.nombre = nombre;
          this.id= id;
+         this.id2=id2;
          
          
      }
@@ -65,6 +66,13 @@ public class NodoE {
          this.id=id;
      }
      
+     public int getId2(){
+         return id2;
+     }
+     
+     public void setId2(int id2){
+         this.id2=id2;
+     }
      public NodoE getSiguiente(){
          return siguiente;
      }
