@@ -57,6 +57,7 @@ public class Listado extends JFrame{
         this.setVisible(true);
         this.add(cuatro,BorderLayout.CENTER);
         cuatro.Recibe(datos2,cod);
+        cuatro.invisible(this);
         setLayout(null);
         datos2=null;
         

@@ -19,7 +19,7 @@ public class Creacion extends JFrame{
 public Creacion (){
         super("Mario Maker Guatemalteco 1.0 Creacion");
         this.setVisible(true);
-        this.setBounds(500,20,660,700);
+        this.setBounds(500,0,660,760);
         CreacionP uno = new CreacionP();
         uno.invisible(this);
       
@@ -28,6 +28,7 @@ public Creacion (){
         this.add(uno,BorderLayout.CENTER);
         
         setLayout(null);
+        repaint();
         this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE);
         
         AudioClip sonido;

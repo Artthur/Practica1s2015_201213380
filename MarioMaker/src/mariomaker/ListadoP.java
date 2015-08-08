@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -23,13 +24,15 @@ import javax.swing.JPanel;
  * @author Raul
  */
 public class ListadoP extends JPanel implements ActionListener{
-    public JButton boton1,boton2,boton3,boton4,elim1,elim2,elim3,elim4,mod1,mod2,mod3,mod4,carga,mostra,sig,ant;
+    public JButton boton1,boton2,boton3,boton4,elim1,elim2,elim3,elim4,mod1,mod2,mod3,mod4,carga,mostra,sig,ant,cont;
     public TextField campo1,campo2,campo3,campo4;
     public JLabel imagen1,imagen2,imagen3,imagen4;
     public int cod,t,auxid1,auxid2,auxid3,auxid4;
     ListaE datos3 = new ListaE();
     ListaE aux = new ListaE();
+    Tablero tablero  = new Tablero();
     public NodoE sigui,anti ;
+    public JFrame m;
     
    
     
@@ -60,6 +63,13 @@ public class ListadoP extends JPanel implements ActionListener{
         mostra.setVisible(true);
         mostra.addActionListener(this);
         this.add(mostra);
+        cont= new JButton("Continuar...");
+        cont.setBounds(480,100,150,20);
+        cont.setBackground(Color.black.brighter());
+        cont.setForeground(Color.green);
+        cont.setVisible(true);
+        cont.addActionListener(this);
+        this.add(cont);
         
         sig= new JButton("Siguiente -->");
         sig.setBounds(480,400,150,20);
@@ -86,8 +96,7 @@ public class ListadoP extends JPanel implements ActionListener{
         boton3.setBounds(10,10,85,20);
         boton3.setBackground(Color.black.brighter());
         boton3.setForeground(Color.white);
-        boton3.setVisible(true);
-        boton3.addActionListener(this); 
+        boton3.setVisible(true); 
         this.add(boton3);
         
         campo1= new TextField("");
@@ -198,7 +207,7 @@ public class ListadoP extends JPanel implements ActionListener{
     }
     
     
-    public boolean OrdenarC(){
+  public boolean OrdenarC(){
         
     NodoE Cola = datos3.inicio;  
  try{   while(Cola.tieneSiguiente()){
@@ -222,7 +231,7 @@ public class ListadoP extends JPanel implements ActionListener{
     
 }
     
-    public boolean OrdenarP(){
+  public boolean OrdenarP(){
         
         NodoE Pila = datos3.inicio;  
  try{   while(Pila.tieneSiguiente()){
@@ -249,7 +258,7 @@ public class ListadoP extends JPanel implements ActionListener{
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+  public void actionPerformed(ActionEvent e) {
        //Boton para eliminar con id
         if(e.getSource()==boton1) {
        try{     
@@ -295,6 +304,12 @@ public class ListadoP extends JPanel implements ActionListener{
         //Boton para ordenar
        else if(e.getSource()==carga) {
         Extraer(cod);
+        }
+       
+       //Boton para continuar
+       else if(e.getSource()==cont) {
+        tablero.poner();
+        m.setVisible(false);
         }
        
        //Boton para Actualizar muestra
@@ -477,5 +492,11 @@ auxilio = auxilio.siguiente;
    }
       return true;
   }
+  
+  public boolean invisible(JFrame n){
+         m = n;
+         
+            return true;
+        }
   
 }

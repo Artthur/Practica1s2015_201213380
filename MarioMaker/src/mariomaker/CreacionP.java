@@ -33,12 +33,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
         this.add(boton3);
  */
 public class CreacionP extends javax.swing.JPanel implements ActionListener{
-    public JButton boton1, boton2, boton3, boton4,boton5,ad1,ad2,ad3,ad4,ad5,ad6,ad7,b1,b2,b3,b4,b5,b6,b7;
-    public TextField campo1,campo2,campo3,campo4,campo5,campo6,campo7,c1,c2,c3,c4,c5,c6,c7;
-    public JLabel imagen1,imagen2,imagen3,imagen4,imagen5,imagen6,imagen7;
-    public BufferedImage imageActual,au1,au2,au3,au4,au5,au6,au7;
+    public JButton boton1, boton2, boton3, boton4,boton5,ad1,ad2,ad3,ad4,ad5,ad6,ad7,ad8,b1,b2,b3,b4,b5,b6,b7,b8;
+    public TextField campo1,campo2,campo3,campo4,campo5,campo6,campo7,campo8,c1,c2,c3,c4,c5,c6,c7,c8;
+    public JLabel imagen1,imagen2,imagen3,imagen4,imagen5,imagen6,imagen7,imagen8;
+    public BufferedImage imageActual,au1,au2,au3,au4,au5,au6,au7,au8;
     public String auxdir;
-    public int n2,i,i2,i3,i4,i5,i6,i7,identifica=0;
+    public int n2,i,i2,i3,i4,i5,i6,i7,i8,identifica=0;
     Editar form = new Editar();
     ListaE datos = new ListaE();
     Listado uno = new Listado();
@@ -99,18 +99,25 @@ public CreacionP(){
         ad7.addActionListener(this);
         ad7.setVisible(true);
         this.add(ad7);
+        ad8= new JButton(" añadir ");
+        ad8.setBounds(240,630,80,20);
+        ad8.setForeground(Color.red);
+        ad8.setBackground(Color.black.brighter());
+        ad8.addActionListener(this);
+        ad8.setVisible(true);
+        this.add(ad8);
         
         
         // Botones Especiales
         boton4= new JButton(" Continuar ");
-        boton4.setBounds(500,300,90,20);
-        boton4.setForeground(Color.red);
+        boton4.setBounds(500,40,100,20);
+        boton4.setForeground(Color.green);
         boton4.setBackground(Color.black.brighter());
         boton4.setVisible(true);
         boton4.addActionListener(this);
         this.add(boton4);
         boton3= new JButton(" Editar ");
-        boton3.setBounds(500,10,90,20);
+        boton3.setBounds(500,10,100,20);
         boton3.setForeground(Color.red);
         boton3.setBackground(Color.black.brighter());
         boton3.setVisible(true);
@@ -183,6 +190,13 @@ public CreacionP(){
         b7.addActionListener(this);
         b7.setVisible(true);
         this.add(b7);
+        b8= new JButton(" ... ");
+        b8.setBounds(105,630,20,20);
+        b8.setForeground(Color.red);
+        b8.setBackground(Color.black.brighter());
+        b8.addActionListener(this);
+        b8.setVisible(true);
+        this.add(b8);
         
         // Campos de Nombres
         campo1= new TextField("Meta");
@@ -213,6 +227,10 @@ public CreacionP(){
         campo7.setBounds(140,550,80,20);
         campo7.setVisible(true);
         this.add(campo7);
+        campo8= new TextField("");
+        campo8.setBounds(140,630,80,20);
+        campo8.setVisible(true);
+        this.add(campo8);
         
         
         // Campos de Cantidad
@@ -244,6 +262,11 @@ public CreacionP(){
         c7.setBounds(340,550,20,20);
         c7.setVisible(true);
         this.add(c7);
+        c8= new TextField("");
+        c8.setBounds(340,630,20,20);
+        c8.setVisible(true);
+        this.add(c8);
+        
         
       
         
@@ -362,6 +385,14 @@ public CreacionP(){
       imagen7.setBounds(10,515,85,75);
       this.add(imagen7);
       repaint();}
+     else if(e.getSource()==b8) {
+      imagen8 = new JLabel();
+      imagen8.setIcon(new ImageIcon(abrirImagen()));
+            au8= imageActual;
+      System.out.println(au8);
+      imagen8.setBounds(10,595,85,75);
+      this.add(imagen8);
+      repaint();}
         
          
      //Botontes Especiales    
@@ -457,6 +488,13 @@ public CreacionP(){
         datos.adicionar(au7,campo7.getText(),identifica);
          System.out.println("Dato añadido"); 
          c7.setText(Integer.toString(i7));
+         }
+     else if(e.getSource()==ad8) {
+         i8++;
+         identifica++;
+        datos.adicionar(au8,campo8.getText(),identifica);
+         System.out.println("Dato añadido"); 
+         c8.setText(Integer.toString(i8));
          }
     
       }
