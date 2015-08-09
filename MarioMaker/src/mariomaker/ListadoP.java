@@ -284,19 +284,20 @@ public class ListadoP extends JPanel implements ActionListener{
        //Botones de eliminar
         else if(e.getSource()==elim1) {
         aux.sustraer(auxid1);
-         Cantidad(i);    
+         //Cantidad(i); 
+         
         }
         else if(e.getSource()==elim2) {
         aux.sustraer(auxid2);
-         Cantidad(i2);
+         //Cantidad(i2);
         }
         else if(e.getSource()==elim3) {
         aux.sustraer(auxid3);
-         Cantidad(i3);
+         //Cantidad(i3);
         }
         else if(e.getSource()==elim4) {
         aux.sustraer(auxid4);
-         Cantidad(i4);
+         //Cantidad(i4);
         }
         
         //Botones de Modificar
@@ -526,29 +527,37 @@ auxilio = auxilio.siguiente;
   public boolean Cantidad(int f){
       if(f==1){
             q1--;
+            return true;
         }
       else if(f==2){
             q2--;
+            return true;
         }
       else if(f==3){
             q3--;
+            return true;
         }
       else  if(f==4){
             q4--;
+            return true;
         }
       else if(f==5){
             q5--;
+            return true;
         }
      else if(f==6){
             q6--;
+            return true;
         }
      else if(f==7){
             q7--;
+            return true;
         }
      else if(f==8){
             q8--;
+            return true;
         }
-return true;      
+return false;      
   }
 }
   

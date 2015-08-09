@@ -33,7 +33,7 @@ public Creacion (){
         
         AudioClip sonido;
         sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Imagenes/cancion_mario_kart.wav"));
-       //  sonido.play();
+        sonido.play();
          
     }
 

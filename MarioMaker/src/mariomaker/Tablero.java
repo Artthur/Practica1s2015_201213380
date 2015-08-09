@@ -7,9 +7,15 @@
 package mariomaker;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,7 +26,7 @@ import javax.swing.JOptionPane;
  *
  * @author Raul
  */
-public class Tablero extends JFrame implements ActionListener{
+public class Tablero extends JFrame implements ActionListener,KeyListener{
     public JButton boton1,boton2,boton3,boton4,siguiente,anterior,muestra,elifila,elicolu,cont,boton5;
     public JLabel imagen;
     public String m1,m2,m3,m4,m5,m6,m7,m8;
@@ -28,9 +34,12 @@ public class Tablero extends JFrame implements ActionListener{
     NodoE nuevo;
     Datos n = new Datos();
     public int  j1,j2,j3,j4,j5,j6,j7,j8;
+    Juego Play = new Juego();
+    Eliminar x = new Eliminar();
+    public TableroP p;
     
     public Tablero(){
-        super("Mario Maker Guatemalteco 1.0 Creacion");
+        super("Mario Maker Guatemalteco 1.0 Tablero");
         this.setBounds(60,0,1310,770);
         this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE);
         this.setVisible(false);
@@ -90,14 +99,6 @@ public class Tablero extends JFrame implements ActionListener{
         imagen = new JLabel();
         imagen.setBounds(1190,10,85,75);
         
-        muestra= new JButton("Matriz");
-        muestra.setBounds(10,60,1170,660);
-        muestra.setForeground(Color.black);
-        muestra.setBackground(Color.white.brighter());
-        muestra.setVisible(true);
-        muestra.addActionListener(this); 
-        this.add(muestra);
-        
         elifila= new JButton("Add-Columna");
         elifila.setBounds(1185,125,110,20);
         elifila.setForeground(Color.red);
@@ -129,16 +130,18 @@ public class Tablero extends JFrame implements ActionListener{
       JLabel fondo2 = new JLabel(imagen2s);
       fondo2.setBounds(new Rectangle(275,0,800,60));
       this.add(fondo2);
-        
-        
-        
+      
+      p = new TableroP();
+      this.add(p);
+      
         
         repaint();
+        
+        
+        
     }
     
     public boolean Datos(String a1,String a2,String a3,String a4,String a5,String a6,String a7,String a8){
-        
-        
         m1=a1;
         m2=a2;
         m3=a3;
@@ -147,16 +150,9 @@ public class Tablero extends JFrame implements ActionListener{
         m6=a6;
         m7=a7;
         m8=a8;
-  
-      
- 
-   
     return true;
- 
- 
-
-
 }
+    
     public void poner(){
         this.setVisible(true);
         setLayout(null);
@@ -216,7 +212,7 @@ public class Tablero extends JFrame implements ActionListener{
       
   }
   
-  public boolean Anterior(){
+    public boolean Anterior(){
       nuevo=nuevo.anterior;
     
    try {
@@ -272,8 +268,82 @@ public class Tablero extends JFrame implements ActionListener{
         n.ver();
         
         }
+       else if(e.getSource()==cont) {
+        this.setVisible(false); 
+        Play.poner();
+        
+        
+        }
+       
+       else if(e.getSource()==boton2) {
+        
+        x.ver();
+ 
+        }
        
        
+       
+       
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /* public void paint(Graphics g){
+      //  update(g);
+    }
+    
+    public void update(Graphics g){
+        
+        Graphics2D g2 = (Graphics2D)g;
+        Dimension d = this.getSize();
+        Image imagen = createImage(10,70);
+        Graphics2D fondo = (Graphics2D)imagen.getGraphics();
+        //Dibujar(g);
+        
+        g2.drawImage(imagen, 0, 0, this);
+    }
+    
+    public void Dibujar(Graphics g){
+        //10,60,1170,660
+        Graphics2D G2 = (Graphics2D)g;
+        int posicion_x =10;
+        int posicion_y =60;
+        for(int i = 0;i<2;i++){
+            
+            for(int y=0;i<4;i++){
+                G2.drawRect(posicion_x, posicion_y, 80, 75);
+                posicion_x+=80;
+                
+            }
+            posicion_y+=75;
+            posicion_x=10;
+        }
+       
+    }*/
+    
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode()==38){
+            System.out.println("Arriba");
+        }
+       else if(e.getKeyCode()==40){
+            System.out.println("Abajo");
+        }
+        else if(e.getKeyCode()==37){
+            System.out.println("izquierda");
+        }
+        else if(e.getKeyCode()==39){
+            System.out.println("derecha");
+        }
+        
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
