@@ -9,6 +9,10 @@ package mariomaker;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -18,6 +22,7 @@ import javax.swing.JFrame;
  */
 public class Graficas extends JFrame implements ActionListener{
      public JButton boton1,boton2,boton3;
+     public String ruta="";
      
     public Graficas(){
     super("Eliminacion");
@@ -58,6 +63,7 @@ public class Graficas extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    
 }
+    
+   
+

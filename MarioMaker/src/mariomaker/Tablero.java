@@ -7,15 +7,15 @@
 package mariomaker;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -37,6 +37,7 @@ public class Tablero extends JFrame implements ActionListener,KeyListener{
     Juego Play = new Juego();
     Eliminar x = new Eliminar();
     public TableroP p;
+    public String ruta="";
     
     public Tablero(){
         super("Mario Maker Guatemalteco 1.0 Tablero");
@@ -153,6 +154,78 @@ public class Tablero extends JFrame implements ActionListener,KeyListener{
     return true;
 }
     
+      public void generar(){
+         try {
+
+//path del dot.exe,por lo general es la misma, pero depende de donde hayas instalado el paquete de Graphviz
+
+String dotPath = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
+
+//path del archivo creado con el codigo del graphviz que queremos
+
+String fileInputPath =  ruta;
+
+//path de salida del grafo, es decir el path de la imagen que vamos a crear con graphviz
+
+String fileOutputPath = "C:\\Users\\Raul\\Desktop\\Diagramas\\ListaDoble.png";
+
+//tipo de imagen de salida, en este caso es jpg
+
+String tParam = "-Tpng";
+
+String tOParam = "-o";
+
+//concatenamos nuestras direcciones. Lo que hice es crear un vector, para poder editar las direcciones de entrada y salida, usando las variables antes inicializadas
+
+//recordemos el comando en la consola de windows: C:\Archivos de programa\Graphviz 2.21\bin\dot.exe -Tjpg grafo1.txt -o grafo1.jpg Esto es lo que concatenamos en el vector siguiente:
+
+String[] cmd = new String[5];
+ cmd[0] = dotPath;
+ cmd[1] = tParam;
+ cmd[2] = fileInputPath;
+ cmd[3] = tOParam;
+ cmd[4] = fileOutputPath;
+
+//Invocamos nuestra clase 
+
+Runtime rt = Runtime.getRuntime();
+
+//Ahora ejecutamos como lo hacemos en consola
+
+rt.exec( cmd );
+
+} catch (Exception ex) {
+ ex.printStackTrace();
+ }  finally {
+ }
+    }
+      public void archivo() throws IOException{
+        this.ruta = "C:\\Users\\Raul\\Desktop\\Diagramas\\ListaDoble.txt";
+        File archivo = new File(ruta);
+        BufferedWriter bw;
+            bw = new BufferedWriter(new FileWriter(archivo));
+            bw.write("digraph  G { rankdir=LR; Objetos->");
+            NodoE temp = Datos.inicio;
+            while (temp != null){
+            System.out.println(temp.getNombre()+"-----"+temp.getId()+"-----");
+            
+            bw.write(temp.getNombre());
+            
+            
+            
+            
+          if(temp.siguiente==null){
+                bw.write(";label = \" "+"ListaDoblementeEnlazadaFinal"+"\";}");
+            bw.write("}");}
+            else {
+                bw.write("->");}
+            temp = temp.siguiente;
+ 
+ }
+           bw.close();
+      }
+     
+      
     public void poner(){
         this.setVisible(true);
         setLayout(null);
