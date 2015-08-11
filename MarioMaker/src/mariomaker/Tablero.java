@@ -16,6 +16,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -205,23 +207,54 @@ rt.exec( cmd );
         BufferedWriter bw;
             bw = new BufferedWriter(new FileWriter(archivo));
             bw.write("digraph  G { rankdir=LR; Objetos->");
-            NodoE temp = Datos.inicio;
-            while (temp != null){
+            NodoE temp = Datos.inicio ;
+            NodoE tempo= temp;
+            int n=0;
+        while (temp != null){
             System.out.println(temp.getNombre()+"-----"+temp.getId()+"-----");
             
-            bw.write(temp.getNombre());
+            bw.write(temp.getNombre()+n);
+           
             
-            
-            
-            
-          if(temp.siguiente==null){
-                bw.write(";label = \" "+"ListaDoblementeEnlazadaFinal"+"\";}");
-            bw.write("}");}
-            else {
-                bw.write("->");}
-            temp = temp.siguiente;
+                    if(temp.siguiente==null){
+                       
+                        bw.write("->");
+                       tempo=temp;
+                       
+
+              
+                        }
+                          else {
+                             bw.write("->");
+                             n++;
+                             
+                    }
+                    temp = temp.siguiente;
+                    
+                        
  
  }
+            tempo=tempo.anterior;
+            n--;
+            while(tempo!=null){
+                System.out.println(tempo.getNombre()+"-----"+tempo.getId()+"-----"+"222");
+                     bw.write(tempo.getNombre()+n);
+               
+                        if(tempo.anterior==null){
+                            bw.write(";");
+                           bw.write("label = \" "+"Lista Doble"+"\";");
+                           bw.write("}");
+                            }
+                        else{
+                            bw.write("->");
+                            n--;
+                            
+                             }
+                        tempo= tempo.anterior;
+                     }
+            
+            
+            
            bw.close();
       }
      
@@ -351,6 +384,17 @@ rt.exec( cmd );
        else if(e.getSource()==boton2) {
         
         x.ver();
+ 
+        }
+       
+       else if(e.getSource()==boton3) {
+        
+           try {
+               archivo();
+               generar();
+           } catch (IOException ex) {
+              JOptionPane.showMessageDialog(null,"Error");
+           }
  
         }
        
