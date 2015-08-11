@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -23,22 +25,25 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 /**
  *
  * @author Raul
  */
-public class Tablero extends JFrame implements ActionListener,KeyListener{
+public class Tablero extends JFrame implements ActionListener,KeyListener,MouseListener{
     public JButton boton1,boton2,boton3,boton4,siguiente,anterior,muestra,elifila,elicolu,cont,boton5;
     public JLabel imagen;
     public String m1,m2,m3,m4,m5,m6,m7,m8;
     ListaE Datos = new ListaE();
     NodoE nuevo;
     Datos n = new Datos();
-    public int  j1,j2,j3,j4,j5,j6,j7,j8,X=0,Y=0;
+    public int  j1,j2,j3,j4,j5,j6,j7,j8,X=0,Y=0,corrimiento;
     Juego Play = new Juego();
     Eliminar x = new Eliminar();
     public TableroP p;
+    public JPanel Area;
     public String ruta="";
     Matriz Tablero;
     NodoM Puntero;
@@ -137,8 +142,11 @@ public class Tablero extends JFrame implements ActionListener,KeyListener{
       fondo2.setBounds(new Rectangle(275,0,800,60));
       this.add(fondo2);
       
-      p = new TableroP();
-      this.add(p);
+      
+      
+      
+    Tablero = new Matriz();
+    
       
         
         repaint();
@@ -408,7 +416,7 @@ rt.exec( cmd );
         }
         Tablero.adicionarFila();
         Y++;
-        repaint();
+        Pintar();
  
         }
        
@@ -416,8 +424,8 @@ rt.exec( cmd );
         
         Tablero.adicionarColumna();
         X++;
-        repaint();
- 
+        Pintar();
+        
         }
        
        
@@ -531,6 +539,65 @@ rt.exec( cmd );
             y++;
             Aux1 = Aux1.abajo;
         }
+    }
+    
+    private void Pintar() {
+        if (Puntero == null && Tablero.raiz != null) {
+            Puntero = Tablero.raiz;
+        }
+        if (Puntero != null) {
+            //System.out.println("Hola");
+            NodoM Aux1 = Puntero;
+            while (Aux1 != null) {
+                //System.out.println("Aux1");
+                NodoM Aux2 = Aux1;
+                while (Aux2 != null) {
+                    //System.out.println("Aux2");
+                    if (!Aux2.isVisible()) {
+                        //System.out.println("No es visible");
+                        Area.add(Aux2);
+                        Aux2.setVisible(true);
+                        Aux2.setBounds((Aux2.x + corrimiento) * 30, Aux2.y * 30, 30, 30);
+                        //aux.setText("Hola");
+                        Aux2.setBorder(LineBorder.createGrayLineBorder());
+                        Aux2.setOpaque(true);
+                        Aux2.addMouseListener(this);
+                        //System.out.println(Color.);
+                        //float a = 0.6;
+                        Aux2.setBackground(Color.getHSBColor(0.45f, 0.45f, 1.0f));
+                        //Area.revalidate();
+                        //Area.repaint();
+                    }
+                    Aux2 = Aux2.derecha;
+                }
+                Aux1 = Aux1.abajo;
+            }
+        }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

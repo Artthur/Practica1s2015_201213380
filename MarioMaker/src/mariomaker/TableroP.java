@@ -6,12 +6,14 @@
 
 package mariomaker;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -21,13 +23,17 @@ public class TableroP extends JPanel{
     
     public int posicion_x=10;
     public int posicion_y=60;
+    int X = 0, Y = 0;//24,12
+    int corrimiento = 0;
      Matriz Tablero;
     NodoM Puntero;
 public TableroP()  {
     this.setVisible(true);
     this.setBounds(10,60,1170,660);
-   this.repaint();
+    Tablero = new Matriz();
+    this.repaint();
 }  
+
 
 private void MoverDer() {
         NodoM Aux1 = Tablero.raiz;
@@ -79,7 +85,7 @@ private void MoverDer() {
        
     }
     
-    public void update(Graphics g){
+    /*public void update(Graphics g){
         
         Graphics2D g2 = (Graphics2D)g;
         Dimension d = this.getSize();
@@ -106,5 +112,5 @@ private void MoverDer() {
             posicion_x=0;
         }
        
-    }
+    }*/
 }
