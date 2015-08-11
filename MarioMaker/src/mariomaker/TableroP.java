@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Rectangle;
 import javax.swing.JPanel;
 
 /**
@@ -20,13 +21,62 @@ public class TableroP extends JPanel{
     
     public int posicion_x=10;
     public int posicion_y=60;
+     Matriz Tablero;
+    NodoM Puntero;
 public TableroP()  {
     this.setVisible(true);
     this.setBounds(10,60,1170,660);
    this.repaint();
 }  
+
+private void MoverDer() {
+        NodoM Aux1 = Tablero.raiz;
+        while (Aux1 != null) {
+            NodoM Aux2 = Aux1;
+            while (Aux2 != null) {
+                Rectangle info = Aux2.getBounds();
+                Aux2.setBounds(info.x - 30, info.y, 30, 30);
+                Aux2 = Aux2.derecha;
+            }
+            Aux1 = Aux1.abajo;
+        }
+    }
+
+    private void MoverIzq() {
+        NodoM Aux1 = Tablero.raiz;
+        while (Aux1 != null) {
+            NodoM Aux2 = Aux1;
+            while (Aux2 != null) {
+                Rectangle info = Aux2.getBounds();
+                Aux2.setBounds(info.x + 30, info.y, 30, 30);
+                Aux2 = Aux2.derecha;
+            }
+            Aux1 = Aux1.abajo;
+        }
+    }
+    private void ActualizarPos(){
+        NodoM Aux1 = Tablero.raiz;
+        int y = 0;
+        while(Aux1!=null){
+            NodoM Aux2=Aux1;
+            int x =0;
+            while(Aux2!=null){
+                Aux2.x = x;
+                Aux2.x = y;
+                Aux2.setBounds(x*30, y*30, 30, 30);
+                //System.out.println("x:" + (x*30) + " y:" + (y*30));
+                x++;
+                Aux2 = Aux2.derecha;
+            }
+            y++;
+            Aux1 = Aux1.abajo;
+        }
+    }
+
+
+
      public void paint(Graphics g){
-       update(g);
+       
     }
     
     public void update(Graphics g){

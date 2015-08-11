@@ -35,11 +35,14 @@ public class Tablero extends JFrame implements ActionListener,KeyListener{
     ListaE Datos = new ListaE();
     NodoE nuevo;
     Datos n = new Datos();
-    public int  j1,j2,j3,j4,j5,j6,j7,j8;
+    public int  j1,j2,j3,j4,j5,j6,j7,j8,X=0,Y=0;
     Juego Play = new Juego();
     Eliminar x = new Eliminar();
     public TableroP p;
     public String ruta="";
+    Matriz Tablero;
+    NodoM Puntero;
+    
     
     public Tablero(){
         super("Mario Maker Guatemalteco 1.0 Tablero");
@@ -398,6 +401,27 @@ rt.exec( cmd );
  
         }
        
+        else if(e.getSource()==elifila) {
+        
+        if (Tablero.raiz == null) {
+            X++;
+        }
+        Tablero.adicionarFila();
+        Y++;
+        repaint();
+ 
+        }
+       
+       else if(e.getSource()==elicolu) {
+        
+        Tablero.adicionarColumna();
+        X++;
+        repaint();
+ 
+        }
+       
+       
+       
        
        
        
@@ -408,6 +432,8 @@ rt.exec( cmd );
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    
+    
     /* public void paint(Graphics g){
       //  update(g);
     }
@@ -463,5 +489,48 @@ rt.exec( cmd );
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    private void MoverDer() {
+        NodoM Aux1 = Tablero.raiz;
+        while (Aux1 != null) {
+            NodoM Aux2 = Aux1;
+            while (Aux2 != null) {
+                Rectangle info = Aux2.getBounds();
+                Aux2.setBounds(info.x - 30, info.y, 30, 30);
+                Aux2 = Aux2.derecha;
+            }
+            Aux1 = Aux1.abajo;
+        }
+    }
+
+    private void MoverIzq() {
+        NodoM Aux1 = Tablero.raiz;
+        while (Aux1 != null) {
+            NodoM Aux2 = Aux1;
+            while (Aux2 != null) {
+                Rectangle info = Aux2.getBounds();
+                Aux2.setBounds(info.x + 30, info.y, 30, 30);
+                Aux2 = Aux2.derecha;
+            }
+            Aux1 = Aux1.abajo;
+        }
+    }
+    private void ActualizarPos(){
+        NodoM Aux1 = Tablero.raiz;
+        int y = 0;
+        while(Aux1!=null){
+            NodoM Aux2=Aux1;
+            int x =0;
+            while(Aux2!=null){
+                Aux2.x = x;
+                Aux2.x = y;
+                Aux2.setBounds(x*30, y*30, 30, 30);
+                //System.out.println("x:" + (x*30) + " y:" + (y*30));
+                x++;
+                Aux2 = Aux2.derecha;
+            }
+            y++;
+            Aux1 = Aux1.abajo;
+        }
+    }
     
 }
